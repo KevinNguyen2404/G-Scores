@@ -5,9 +5,10 @@ import ChartDataLabels from "chartjs-plugin-datalabels";
 Chart.register(ChartDataLabels);
 
 $(document).ready(function () {
+    // Only initialize chart if canvas exists
     const canvas = document.getElementById("scoreChart");
     if (!canvas) {
-        console.error("Error: Canvas element not found");
+        // Canvas not found - this is normal on pages without charts
         return;
     }
 
