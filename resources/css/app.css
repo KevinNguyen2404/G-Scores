@@ -1,0 +1,223 @@
+@import "tailwindcss";
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
+}
+:root {
+    --primary-color: #4a8f29;
+    --secondary-color: #f7d794;
+    --background-light: #f4f6f9;
+    --text-color: #333;
+    --sidebar-width: 270px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-light);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+.btn-success {
+    background-color: var(--primary-color);
+}
+
+.mobile-nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--primary-color);
+    padding: 1rem;
+    z-index: 1001;
+}
+
+.mobile-nav-toggle {
+    color: white;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: var(--sidebar-width);
+    background: linear-gradient(
+        135deg,
+        var(--primary-color),
+        var(--secondary-color)
+    );
+    padding-top: 40px;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        width: 100%;
+        padding-top: 80px;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .mobile-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .content {
+        margin-left: 0 !important;
+        padding: 80px 15px 30px;
+    }
+}
+
+.sidebar-logo {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 0 20px;
+}
+
+.sidebar-logo h2 {
+    color: white;
+    font-weight: 700;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-logo i {
+    margin-right: 10px;
+    font-size: 1.5rem;
+}
+
+.sidebar-menu {
+    list-style: none;
+}
+
+.sidebar-menu a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.sidebar-menu a i {
+    margin-right: 12px;
+    font-size: 1.2rem;
+}
+
+.sidebar-menu a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-left-color: white;
+}
+
+.sidebar-menu a.active {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-left-color: white;
+}
+
+.content {
+    margin-left: var(--sidebar-width);
+    padding: 30px;
+    transition: margin-left 0.3s ease;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.grid-container {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+@media (max-width: 768px) {
+    .table-responsive {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 576px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.3rem;
+    }
+
+    body {
+        font-size: 0.95rem;
+    }
+}
+
+.page-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.page-title h1 {
+    margin: 0;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.page-title i {
+    margin-right: 15px;
+    color: var(--primary-color);
+    font-size: 2rem;
+}
+
+@media (max-width: 768px) {
+    .page-title {
+        margin-top: 50px;
+    }
+}
+
+.offcanvas {
+    background: linear-gradient(
+        135deg,
+        var(--primary-color),
+        var(--secondary-color)
+    );
+}
